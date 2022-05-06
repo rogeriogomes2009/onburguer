@@ -6,9 +6,46 @@ const Product = ({ product }) => {
   const add = (product) => () => {
     cart.addToCart(product)
   }
+  /*return (
+    <div class='flex justify-center items-center'>
+      <div class='container mx-auto max-w-sm w-full p-10'>
+        <div class='card flex flex-col justify-center py-5 px-5 bg-white rounded-lg shadow-3xl'>
+          <div class='prod-title'>
+            <p class='uppercase text-center text-sm text-gray-400'>
+              SUA FOME ACABA AQUI!
+            </p>
+            <p class='text-md text-center uppercase text-gray-900 font-bold'>
+              {product.data.name}
+            </p>
+          </div>
+          <div class='prod-img'>
+            <img
+              src={product.data.image.url}
+              alt=''
+              class='w-full object-cover object-center'
+            />
+          </div>
+          <div class='prod-info grid gap-10'>
+            <div>
+              <ul class='flex flex-row justify-center items-center'></ul>
+            </div>
+            <div class='flex flex-col md:flex-row justify-between items-center text-gray-900'>
+              <p class='font-bold text-xl'>R$ {product.data.price}</p>
+              <button
+                class='px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
+                onClick={add(product)}
+              >
+                <CartIcon />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )*/
   return (
     <section className='flex flex-col md:flex-row py-10 px-5 bg-red-700 rounded-3xl shadow-lg w-1/3'>
-      <div className='text-indigo-500 flex flex-col justify-between'>
+      <div className='text-md text-center uppercase text-gray-900 font-bold'>
         <img src={product.data.image.url} alt='' />
       </div>
       <div className='text-yellow-100'>
@@ -17,14 +54,15 @@ const Product = ({ product }) => {
           {product.data.name}
         </h3>
         <div>
-          <h3 className=' text-blue-100 text-3xl font-semibold mb-7 text-center'>
+          <h3 className='flex flex-col md:flex-row justify-between items-center text-yellow-100 font-bold text-3xl underline underline-offset-4'>
             R$ {product.data.price}
           </h3>
         </div>
         <div className='flex gap-0.5 mt-0'>
           <button
             id='addToCartButton'
-            className='bg-indigo-600 hover:bg-indigo-500 focus:outline-none transition text-white uppercase px-8 py-3'
+            className='px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
+            onClick={add(product)}
           >
             <CartIcon />
           </button>

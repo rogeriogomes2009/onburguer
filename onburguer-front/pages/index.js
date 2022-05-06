@@ -2,12 +2,17 @@ import Prismic from 'prismic-javascript'
 import Header from '../components/Header'
 import Product from '../components/Product'
 import { useCart } from '../components/CartContext'
+import Head from 'next/head'
 
 const Index = ({ products }) => {
   const cart = useCart()
+
   //const products = [1, 2, 3, 4, 5, 6]
   return (
     <>
+      <Head>
+        <title>ONBURGUER</title>
+      </Head>
       <Header />
       <div className='h-screen bg-red-900'>
         <main className='flex flex-row bg-red-900 flex-wrap space-y-1 '>
@@ -16,7 +21,6 @@ const Index = ({ products }) => {
           ))}
         </main>
       </div>
-      <pre>{JSON.stringify(cart.cart, null, 2)}</pre>
     </>
   )
 }

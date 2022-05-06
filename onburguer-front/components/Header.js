@@ -1,14 +1,22 @@
 import { useCart } from './CartContext'
+import Link from 'next/link'
 
 const Header = () => {
   const cart = useCart()
-  const itensCount = Object.keys(cart.cart).length
+  //const itensCount = Object.keys(cart.cart).length
+  const itensCount = Object.keys(cart.cart).reduce((prev, curr) => {
+    return prev + cart.cart[curr].quantity
+  }, 0)
   return (
     <header>
       <navbar>
         <div class='flex justify-between px-6 bg-red-900 items-center py-4'>
           <div>
-            <img src='/logo.png' alt='ONBURGER' />
+            <Link href='/'>
+              <a>
+                <img src='/logo.png' alt='ONBURGER' />
+              </a>
+            </Link>
             <path
               stroke-linecap='round'
               stroke-linejoin='round'
@@ -26,10 +34,14 @@ const Header = () => {
             <li class='text-white text-lg font-semibold tracking-normal cursor-pointer'>
               Contato
             </li>
-            <li class='bg-indigo-600 hover:bg-indigo-500 text-lg font-semibold focus:outline-none transition text-white px-4'>
-              Carrinho
-              {itensCount > 0 && <span>({itensCount})</span>}
-            </li>
+            <Link href='/cart'>
+              <a>
+                <li class='bg-indigo-600 hover:bg-indigo-500 text-lg font-semibold focus:outline-none transition text-white px-4'>
+                  Carrinho
+                  {itensCount > 0 && <span>({itensCount})</span>}
+                </li>
+              </a>
+            </Link>
           </ul>
         </div>
       </navbar>
