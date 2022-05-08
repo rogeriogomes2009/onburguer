@@ -7,32 +7,32 @@ const Product = ({ product }) => {
     cart.addToCart(product)
   }
   /*return (
-    <div class='flex justify-center items-center'>
-      <div class='container mx-auto max-w-sm w-full p-10'>
-        <div class='card flex flex-col justify-center py-5 px-5 bg-white rounded-lg shadow-3xl'>
-          <div class='prod-title'>
-            <p class='uppercase text-center text-sm text-gray-400'>
+    <div className='flex justify-center items-center'>
+      <div className='container mx-auto max-w-sm w-full p-10'>
+        <div className='card flex flex-col justify-center py-5 px-5 bg-white rounded-lg shadow-3xl'>
+          <div className='prod-title'>
+            <p className='uppercase text-center text-sm text-gray-400'>
               SUA FOME ACABA AQUI!
             </p>
-            <p class='text-md text-center uppercase text-gray-900 font-bold'>
+            <p className='text-md text-center uppercase text-gray-900 font-bold'>
               {product.data.name}
             </p>
           </div>
-          <div class='prod-img'>
+          <div className='prod-img'>
             <img
               src={product.data.image.url}
               alt=''
-              class='w-full object-cover object-center'
+              className='w-full object-cover object-center'
             />
           </div>
-          <div class='prod-info grid gap-10'>
+          <div className='prod-info grid gap-10'>
             <div>
-              <ul class='flex flex-row justify-center items-center'></ul>
+              <ul className='flex flex-row justify-center items-center'></ul>
             </div>
-            <div class='flex flex-col md:flex-row justify-between items-center text-gray-900'>
-              <p class='font-bold text-xl'>R$ {product.data.price}</p>
+            <div className='flex flex-col md:flex-row justify-between items-center text-gray-900'>
+              <p className='font-bold text-xl'>R$ {product.data.price}</p>
               <button
-                class='px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
+                className='px-6 py-2 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
                 onClick={add(product)}
               >
                 <CartIcon />
