@@ -15,9 +15,8 @@ const saveOrder = async (order) => {
   })
   await doc.loadInfo()
   const sheet = doc.sheetsByIndex[1]
-  console.log(order)
 
-  const orderId = v4()
+  const orderId = order.id
 
   const rows = order.items.map((item) => {
     const row = {
