@@ -1,30 +1,27 @@
 require('dotenv').config({ path: '../.env.producao' })
 
-const Express = require('express')
-const cors = require('cors')
-const { saveOrder } = require('./lib/spreadsheet')
-const { createPixCharge } = require('./lib/pix')
 
-const app = Express()
 
-app.use(cors())
-app.use(Express.json())
+const https = require('https')
+const fs = require('fs')
+const app = require('./app')
 
-app.get('/', (req, res) => {
-  res.send({ ok: true })
-})
-app.post('/create-order', async (req, res) => {
-  const pixCharge = await createPixCharge(req.body)
-  const { qrcode, cobranca } = pixCharge
-  await saveOrder({ ...req.body, id: cobranca.txid })
-  res.send({ ok: 1, qrcode, cobranca })
-})
+const options = {
+  //tls
+  key: fs.readFileSync(
+    '/etc/letsencrypt/live/api-onburguer.kadoshdev.xyz/privkey.pem'
+  ),
+  cert: fs.readFileSync(
+    '/etc/letsencrypt/live/api-onburguer.kadoshdev.xyz/fullchain.pem'
+  ),
+  //mtls
+  ca: fs.readFileSync(
+    'https://pix.gerencianet.com.br/webhooks/chain-pix-prod.crt'
+  ), //gerencianet
+  minVersion: 'TLSv1.2',
+  requestCert: true,
+  rejectUnauthorized: false,
+}
 
-app.listen(3003, (err) => {
-  if (err) {
-    console.log('Servidor não Iniciado!')
-    console.log(err)
-  } else {
-    console.log('Servidor ONBURGUER rodando na porta 3003')
-  }
-})
+const server = https.createServer(options, app)
+server.listen(443)
