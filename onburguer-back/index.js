@@ -15,9 +15,7 @@ const options = {
     '/etc/letsencrypt/live/api-onburguer.kadoshdev.xyz/fullchain.pem'
   ),
   //mtls
-  ca: fs.readFileSync(
-    'https://pix.gerencianet.com.br/webhooks/chain-pix-prod.crt'
-  ), //gerencianet
+  ca: fs.readFileSync('../../chain-pix-prod.crt'), //gerencianet
   minVersion: 'TLSv1.2',
   requestCert: true,
   rejectUnauthorized: false,
