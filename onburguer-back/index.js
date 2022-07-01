@@ -1,7 +1,5 @@
 require('dotenv').config({ path: '../.env.producao' })
 
-
-
 const https = require('https')
 const fs = require('fs')
 const app = require('./app')
@@ -15,7 +13,7 @@ const options = {
     '/etc/letsencrypt/live/api-onburguer.kadoshdev.xyz/fullchain.pem'
   ),
   //mtls
-  ca: fs.readFileSync('../../chain-pix-prod.crt'), //gerencianet
+  ca: fs.readFileSync('../chain-pix-prod.crt'), //gerencianet
   minVersion: 'TLSv1.2',
   requestCert: true,
   rejectUnauthorized: false,
