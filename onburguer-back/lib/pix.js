@@ -89,11 +89,11 @@ const createPixCharge = async () => {
       expiracao: 3600,
     },
     devedor: {
-      cpf: '12345678909',
-      nome: 'Rogerio Gomes',
+      cpf: order.cpf,
+      nome: order.nome,
     },
     valor: {
-      original: '150.80',
+      original: item.price * item.quantity.toFixed(2),
     },
     chave, //pedir pelo App do GerenciaNet
     solicitacaoPagador: 'Cobrança por Serviços Prestados',
